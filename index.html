@@ -1,0 +1,16 @@
+<!-- 一行載入 -->
+<script src="datasrc-vue-adapter.js" defer></script>
+
+<!-- 你的模板 -->
+<div data_src="payload.json" closure_arg="data">
+  <h1>{data.title}</h1>
+  <p>作者：{data.author.name}</p>
+
+  {#if data.tags && data.tags.length}
+    <ul>
+      {#each data.tags as t, i}
+        <li>{i}. {t}</li>
+      {/each}
+    </ul>
+  {/if}
+</div>
