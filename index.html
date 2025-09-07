@@ -1,16 +1,25 @@
-<!-- 一行載入 -->
-<script src="datasrc-vue-adapter.js" defer></script>
-
-<!-- 你的模板 -->
-<div data_src="payload.json" closure_arg="data">
-  <h1>{data.title}</h1>
-  <p>作者：{data.author.name}</p>
-
-  {#if data.tags && data.tags.length}
-    <ul>
-      {#each data.tags as t, i}
-        <li>{i}. {t}</li>
-      {/each}
-    </ul>
-  {/if}
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-DADA Test</title>
+    <script src="https://unpkg.com/petite-vue" defer></script>
+    <script src="dada.js" defer></script>
+</head>
+<body>
+    <div v-dada="payload.json">
+        <h1>{{ dada.title }}</h1>
+        <p>Author: {{ dada.author.name }}</p>
+        
+        <div v-if="dada.tags && dada.tags.length">
+            <h3>Tags:</h3>
+            <ul>
+                <li v-for="(tag, index) in dada.tags" :key="index">
+                    {{ index }}. {{ tag }}
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
